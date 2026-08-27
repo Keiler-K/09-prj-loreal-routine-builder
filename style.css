@@ -135,41 +135,6 @@ body {
   outline-offset: 2px;
 }
 
-/* visually hidden */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* footer */
-.site-footer {
-  margin: 60px 0 40px;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-}
-
-.site-footer nav {
-  margin-top: 12px;
-}
-
-.site-footer a {
-  margin: 0 8px;
-  color: #000;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  color: #666666;
-}
-
 /* products grid */
 .products-grid {
   display: flex;
@@ -213,6 +178,11 @@ body {
   color: #666;
 }
 
+.product-card:hover,
+.product-card:focus {
+  outline: 3px solid #e3a535;
+}
+
 /* selected products */
 .selected-products {
   margin: 40px 0;
@@ -224,6 +194,219 @@ body {
 .selected-products h2 {
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+.selected-products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.selected-products-list .product-card {
+  flex: 0 1 calc(25% - 10px);
+  min-height: auto;
+  padding: 10px;
+}
+
+.selected-products-list .product-card:hover,
+.selected-products-list .product-card:focus {
+  outline: 3px solid #ff003b;
+}
+
+.selected-products-list .product-image {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+/* product details modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7vh 4vw;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  position: relative;
+  width: min(92vw, 1000px);
+  height: min(86vh, 700px);
+  overflow-y: auto;
+  padding: clamp(28px, 5vw, 64px);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-buttons {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  width: min(92vw, 1000px);
+  padding: 16px 24px;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+}
+
+.modal-buttons button {
+  padding: 12px 20px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.modal-buttons button:last-child {
+  background: #000;
+  color: #fff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  background: #000;
+  color: #fff;
+}
+
+.modal-product-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 40%) 1fr;
+  align-items: center;
+  gap: clamp(28px, 6vw, 72px);
+  min-height: 100%;
+}
+
+.modal-product-image {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  background: #f7f7f7;
+}
+
+.modal-product-image img {
+  width: 100%;
+  max-height: 430px;
+  object-fit: contain;
+}
+
+.modal-product-brand,
+.modal-product-category {
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.modal-product-copy h2 {
+  margin: 12px 0;
+  font-size: clamp(24px, 4vw, 42px);
+  line-height: 1.1;
+}
+
+.modal-product-description {
+  margin-top: 28px;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.7;
+}
+
+@media (max-width: 650px) {
+  .modal {
+    padding: 3vh 3vw;
+  }
+
+  .modal-content {
+    width: 94vw;
+    height: 94vh;
+    padding: 52px 24px 28px;
+  }
+
+  .modal-buttons {
+    width: 94vw;
+    justify-content: stretch;
+  }
+
+  .modal-buttons button {
+    flex: 1;
+  }
+
+  .modal-product-layout {
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 24px;
+  }
+
+  .modal-product-image {
+    min-height: 190px;
+    max-height: 260px;
+  }
+
+  .modal-product-image img {
+    max-height: 240px;
+  }
+}
+
+/* visually hidden */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* footer */
+.site-footer {
+  margin: 60px 0 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.site-footer nav {
+  margin-top: 12px;
+}
+
+.site-footer a {
+  margin: 0 8px;
+  color: #000;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #666666;
 }
 
 #selectedProductsList {

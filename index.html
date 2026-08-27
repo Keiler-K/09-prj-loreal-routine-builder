@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -45,7 +45,7 @@
       <!-- Selected Products -->
       <div class="selected-products">
         <h2>Selected Products</h2>
-        <div id="selectedProductsList"></div>
+        <div id="selectedProductsList" class= "selected-products-list"></div>
         <button id="generateRoutine" class="generate-btn">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
         </button>
@@ -83,6 +83,18 @@
           <a href="#">Contact</a>
         </nav>
       </footer>
+    </div>
+
+    <!-- Product details modal -->
+    <div id="productModal" class="modal hidden">
+      <div class="modal-backdrop" data-close-modal></div>
+      <section class="modal-content">
+        <div id="modalProductDetails"></div>
+      </section>
+      <section class="modal-buttons">
+        <button id="goBack">Close</button>
+        <button id="continue">Add to Routine</button>
+      </section>
     </div>
 
     <script src="script.js"></script>
